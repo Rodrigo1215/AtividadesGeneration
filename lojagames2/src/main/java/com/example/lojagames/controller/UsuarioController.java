@@ -1,6 +1,5 @@
 package com.example.lojagames.controller;
 
-import java.time.Period;
 import java.util.List;
 import java.util.Optional;
 
@@ -80,14 +79,10 @@ public class UsuarioController {
 	 */
 	@PostMapping("/cadastrar")
 	public ResponseEntity<Usuario> postUsuario(@Valid @RequestBody Usuario usuario) {
-		Period periodo = Period.between(usuario.getDataNascimento(), usuario.getLocalDate());
-		if(periodo.getYears() >= 18)
 			return usuarioService.cadastrarUsuario(usuario)
 					.map(resposta -> ResponseEntity.status(HttpStatus.CREATED).body(resposta))
 					.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 		
-		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-
 	}
 
 	/**

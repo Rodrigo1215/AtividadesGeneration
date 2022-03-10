@@ -1,7 +1,5 @@
 package com.example.lojagames.model;
 
-import java.time.LocalDate;
-
 public class UsuarioLogin {
 
 	private Long id;
@@ -9,8 +7,6 @@ public class UsuarioLogin {
 	private String nome;
 	
 	private String usuario;
-	
-	private LocalDate localDate;
 	
 	private String senha;
 	
@@ -38,14 +34,6 @@ public class UsuarioLogin {
 
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
-	}
-
-	public LocalDate getLocalDate() {
-		return localDate;
-	}
-
-	public void setLocalDate(LocalDate localDate) {
-		this.localDate = localDate;
 	}
 
 	public String getSenha() {

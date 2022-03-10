@@ -1,6 +1,5 @@
 package com.example.lojagames.model;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -32,10 +31,7 @@ public class Usuario {
 	@Email(message = "O atributo Usuário deve ser um email válido!")
 	private String usuario;
 	
-	private LocalDate localDate = LocalDate.now();
-	
-	@NotNull(message = "O atributo Data de Nascimento é Obrigatório!")
-	private LocalDate dataNascimento;
+	private String foto;
 
 	@NotBlank(message = "O atributo Senha é Obrigatório!")
 	@Size(min = 8, message = "A Senha deve ter no mínimo 8 caracteres")
@@ -44,6 +40,18 @@ public class Usuario {
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
 	private List<Produto> produto;
+	
+	public Usuario(Long id, String nome, String foto, String usuario, String senha) {
+		this.id = id;
+		this.nome = nome;
+		this.foto = foto;
+		this.usuario = usuario;
+		this.senha = senha;
+	}
+	
+
+	public Usuario() {}
+	
 
 	public Long getId() {
 		return id;
@@ -69,20 +77,12 @@ public class Usuario {
 		this.usuario = usuario;
 	}
 
-	public LocalDate getLocalDate() {
-		return localDate;
+	public String getFoto() {
+		return foto;
 	}
 
-	public void setLocalDate(LocalDate localDate) {
-		this.localDate = localDate;
-	}
-
-	public LocalDate getDataNascimento() {
-		return dataNascimento;
-	}
-
-	public void setDataNascimento(LocalDate dataNascimento) {
-		this.dataNascimento = dataNascimento;
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	public String getSenha() {
@@ -100,8 +100,5 @@ public class Usuario {
 	public void setProduto(List<Produto> produto) {
 		this.produto = produto;
 	}
-
-
-
 
 }
